@@ -1,0 +1,19 @@
+import re
+
+# Open and read input file
+with open("input.txt", "r") as file:
+    text = file.read()
+
+# Use regex to extract all emails
+email_pattern = r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+"
+emails = re.findall(email_pattern, text)
+
+# Remove duplicates (optional)
+unique_emails = list(set(emails))
+
+# Write the emails to output file
+with open("emails.txt", "w") as output:
+    for email in unique_emails:
+        output.write(email + "\n")
+
+print("✅ Email extraction complete. Saved to 'emails.txt'")
